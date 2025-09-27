@@ -6,31 +6,8 @@ Bucklet:
 <img width="1671" height="830" alt="image" src="https://github.com/user-attachments/assets/61028b8c-f3bd-488d-95d0-a02a3a56e458" />
 
 Bucket Policy:
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::angular-static-app01/*"
-        },
-        {
-            "Sid": "AllowCloudFrontServicePrincipal",
-            "Effect": "Allow",
-            "Principal": {
-                "Service": "cloudfront.amazonaws.com"
-            },
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::angular-static-app01/*",
-            "Condition": {
-                "ArnLike": {
-                    "AWS:SourceArn": "arn:aws:cloudfront::598010641694:distribution/E2EN0C2FDNN7LA"
-                }
-            }
-        }
-    ]
-}
+<img width="1316" height="782" alt="image" src="https://github.com/user-attachments/assets/f17084a9-edb2-447c-b8e4-eeffde7f8d01" />
+
 
 # Step 2: Building the Pipeline.
 
@@ -38,30 +15,8 @@ Bucket Policy:
 
 Setting up BuildSpec file.
 
-version: 0.2
-phases:
-  install:
-    runtime-versions:
-      nodejs: 20
-    commands:
-      - echo Installing source NPM dependencies...
-      - npm install -g @angular/cli
+<img width="998" height="840" alt="image" src="https://github.com/user-attachments/assets/ceea57ef-e1e0-41e7-bf39-79ffa3503fcb" />
 
-  pre_build :
-    commands:
-      - echo Installing source NPM dependencies...
-      - npm install
-
-  build:
-    commands:
-      - echo Build started on `date`
-      - echo Building the Angular app...
-      - ng build -c production
-
-artifacts:
-    files:
-      - '**/*'
-    base-directory: dist/my-angular-project  
 
  # Step 3 : Setting up Cloudfront Distribution Setup
 
